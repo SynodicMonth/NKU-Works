@@ -1,0 +1,472 @@
+<!DOCTYPE html><html><head>
+      <title>Review</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<div align="center">
+<h1>
+Operating System
+</h1>
+</div>
+<h1 id="进程">进程 </h1>
+<h2 id="进程的概念">进程的概念 </h2>
+<p>进程是一个具有一定独立功能的程序关于某个数据集合上的一次运行活动，进程是系统进行资源分配和调度的一个独立单位。</p>
+<h2 id="并发与并行">并发与并行 </h2>
+<p>并发：多个进程在一个CPU上运行，但是任意时刻只有一个进程在CPU上运行。<br>
+并行：多个进程同时运行。</p>
+<p><img src="image.png" alt="Alt text"></p>
+<h2 id="进程的特征">进程的特征 </h2>
+<ul>
+<li>虚拟：每个进程有自己虚拟的地址空间、虚拟的设备，以为自己掌控了这台计算机。</li>
+<li>并发：多个进程是在并发交替的执行以提升效率。</li>
+<li>共享：资源（设备、内存）在进程之间共享，分时复用。</li>
+<li>不确定：进程无法预知调度在什么时刻发生。</li>
+</ul>
+<h2 id="进程状态模型">进程状态模型 </h2>
+<p><img src="image-1.png" alt="Alt text"><br>
+<img src="image-2.png" alt="Alt text"><br>
+<img src="image-3.png" alt="Alt text"></p>
+<h2 id="进程调度算法">进程调度算法 </h2>
+<ul>
+<li>先来先服务</li>
+<li>短任务优先，剩余时间短任务优先</li>
+<li>时间片轮转</li>
+<li>优先级队列<br>
+调度算法的设计原则：最优解，可以获取的参数，获取和推理的代价。<br>
+调度的驱动力：进程主动调度（进程主动让出，或者进程发起 syscall 而 os 认为有必要调度），或者中断抢占调度。</li>
+</ul>
+<h2 id="比较调度算法的几个非要重要的指标体系">比较调度算法的几个非要重要的指标体系 </h2>
+<p><strong>CPU 使用率：CPU 处于忙状态的时间百分比</strong><br>
+吞吐量：单位时间内完成的进程数量<br>
+周转时间：进程从初始化到结束（包括等待）的总时间<br>
+等待时间：进程在就绪队列中的总时间<br>
+<strong>响应时间：从提交请求到产生响应所花费的总时间</strong></p>
+<h2 id="进程切换">进程切换 </h2>
+<ul>
+<li>进程切换（上下文切换）
+<ul>
+<li>暂停当前运行进程，从运行状态变成其他状态</li>
+<li>调度另一个进程从就绪状态变成运行状态</li>
+</ul>
+</li>
+<li>进程切换的要求
+<ul>
+<li>切换前，保存进程上下文</li>
+<li>切换后，恢复进程上下文</li>
+<li>快速切换</li>
+</ul>
+</li>
+<li>进程生命周期的信息
+<ul>
+<li>寄存器（PC, SP, ...）</li>
+<li>CPU 状态</li>
+<li>内存地址空间<br>
+<img src="image-4.png" alt="Alt text"></li>
+</ul>
+</li>
+</ul>
+<p><em>进程的切换代价大于线程的切换代价，因为进程的切换需要切换内存地址空间（切换 CR3, 刷新 TLB），而线程的切换不需要切换内存地址空间。</em></p>
+<h2 id="进程间通信">进程间通信 </h2>
+<ul>
+<li>信号</li>
+<li>管道</li>
+<li>消息队列</li>
+<li>共享内存</li>
+</ul>
+<h1 id="线程">线程 </h1>
+<h2 id="线程的实现方案">线程的实现方案 </h2>
+<h3 id="用户级线程ult">用户级线程（ULT） </h3>
+<p>线程的管理全部由用户程序完成，核心部分只对进程管理，但增加“线程库”概念。</p>
+<p>特点：</p>
+<ul>
+<li>进程表在核心区</li>
+<li>线程表在用户区</li>
+<li>线程执行需要一个支持系统（线程库）</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>线程切换不需要内核模式特权。</li>
+<li>线程调用可以是应用程序级的，根据需要可改变调度算法，但不会影响底层的操作系统调度程序。</li>
+<li>ULT管理模式可以在任何操作系统中运行，不需要修改系统内核，线程库是提供应用的实用程序。</li>
+<li></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>系统调用会引起进程阻塞</li>
+<li>这种线程不利于使用多处理器并行</li>
+</ul>
+<h3 id="内核级线程klt">内核级线程（KLT） </h3>
+<p>线程由OS内核进行管理，内核给应用程序级提供系统调用，实现对线程的使用。</p>
+<p>特点：</p>
+<ul>
+<li>线程和进程都在用户空间完成</li>
+<li>进程表和线程表都放在内核空间</li>
+<li>线程在内核中有保存的信息，系统调度是基于线程完成的。</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>可克服ULT的两个缺点，且内核程序本身也可以是多线程结构的。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>线程间的控制转换需要转换到内核模式。</li>
+</ul>
+<p><img src="image-6.png" alt="Alt text"></p>
+<h3 id="组合式">组合式 </h3>
+<p>略</p>
+<h3 id="纤程fiberucontext">纤程（Fiber，ucontext） </h3>
+<p>用户态线程的一种实现方式，用户态线程的切换不需要内核态的切换，只需要用户态的切换，因此切换代价小。</p>
+<ul>
+<li>发挥ULT快速切换的优势</li>
+<li>在编程时提出对程序员的限制，要求他们妥善的设计代码（编译器不允许内核态的切换）</li>
+</ul>
+<p><img src="image-5.png" alt="Alt text"></p>
+<p><img src="image-7.png" alt="Alt text"></p>
+<p>为了保持线程执行的独立性，每个线程有自己的堆栈<br>
+OS 记录一个进程的执行状态所需的数据：</p>
+<ul>
+<li>上下文（寄存器组）保存当前状态</li>
+<li>栈（用于保存函数调用的序列和局部变量）</li>
+</ul>
+<p>线程与进程的比较</p>
+<ul>
+<li>进程是资源分配单位，线程是 CPU 调度单位</li>
+<li>进程拥有一个完整的资源平台，而线程只独享指令流执行的必要资源，如寄存器和栈</li>
+<li>线程具有就绪、等待和运行三种基本状态和状态间的转换关系</li>
+<li>线程能减少井发执行的时间和空间开销
+<ul>
+<li>线程的创建时间比进程短</li>
+<li>线程的终止时间比进程短</li>
+<li>同一进程内的线程切换时间比进程短</li>
+<li>由于同一进程的各线程间共享内存和文件资源，可不通过内核进行直接通信</li>
+</ul>
+</li>
+</ul>
+<h1 id="系统调用">系统调用 </h1>
+<p>系统调用和保护机制</p>
+<ul>
+<li>如何实现内存的保护？设置不同的权限</li>
+<li>系统调用：切换系统的权限状态
+<ul>
+<li>系统调用的本质是一个函数，一个由 os 提供的函数</li>
+<li>提升权限的过程是一个中断，一个用户程序可以主动发起的中断</li>
+<li>系统调用的意义是什么？</li>
+<li>系统调用的代价是什么？</li>
+<li>系统调用（权限转换）有没有高性能的实现方式？（另一个有趣的科研话题，比如 lntel 的 Sysenter &amp; sysexit）</li>
+</ul>
+</li>
+</ul>
+<p><img src="image-8.png" alt="Alt text"></p>
+<h1 id="进程同步">进程同步 </h1>
+<h2 id="临界区">临界区 </h2>
+<p>临界区的访问规则</p>
+<ul>
+<li>空闲则入：没有进程在临界区时，任何进程可进入</li>
+<li>忙则等待：如果有进程在临界区，其他进程均不能进入临界区</li>
+<li>有限等待：等待进入临界区的进程不能无限期等待</li>
+<li>让权等待（可选）：不能进入临界区的进程，应释放CPU（如转换到阻塞状态）</li>
+</ul>
+<h2 id="关中断">关中断 </h2>
+<p>不安全</p>
+<h2 id="peterson算法">Peterson算法 </h2>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code><span class="token comment">// flag initialized to [false, false]</span>
+<span class="token keyword keyword-do">do</span> <span class="token punctuation">{</span>
+    flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    turn <span class="token operator">=</span> j<span class="token punctuation">;</span>
+    <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> turn <span class="token operator">==</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 临界区</span>
+    flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token comment">// 余下区</span>
+<span class="token punctuation">}</span> <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h2 id="dekker算法">Dekker算法 </h2>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code><span class="token comment">// flag initialized to [false, false]</span>
+<span class="token keyword keyword-do">do</span> <span class="token punctuation">{</span>
+    flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span>flag<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>turn <span class="token operator">!=</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span>turn <span class="token operator">!=</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 临界区</span>
+    turn <span class="token operator">=</span> j<span class="token punctuation">;</span>
+    flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token comment">// 余下区</span>
+<span class="token punctuation">}</span> <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h2 id="test-and-set-tas-指令">Test and set (TAS) 指令 </h2>
+<p>TSL reg, lock</p>
+<ul>
+<li>将 lock 的值存入 reg</li>
+<li>将 lock 的值设为 1</li>
+<li>返回 reg 的旧值</li>
+</ul>
+<pre data-role="codeBlock" data-info="asm" class="language-asm asm"><code>enter_cr:
+TSL reg, lock
+CMP reg, #0
+JNE enter_cr
+RET
+</code></pre><pre data-role="codeBlock" data-info="asm" class="language-asm asm"><code>leave_cr:
+MOV lock, #0
+RET
+</code></pre><h2 id="锁">锁 </h2>
+<p>TSL 实现自旋锁（忙等待）</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code><span class="token class-name">Lock</span><span class="token double-colon punctuation">::</span><span class="token function">Acquire</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token function">test_and_set</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token class-name">Lock</span><span class="token double-colon punctuation">::</span><span class="token function">Release</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    lock <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>线程在等待的时候消耗CPU时间</p>
+<p>TSL 实现自旋锁（无忙等待）</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code><span class="token class-name">Lock</span><span class="token double-colon punctuation">::</span><span class="token function">Acquire</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token function">test_and_set</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">add_to_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">Lock</span><span class="token double-colon punctuation">::</span><span class="token function">Release</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    lock <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">remove_from_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="sleep-wakeup">Sleep-Wakeup </h2>
+<p>Primitive: atomic action supported by OS<br>
+Sleep(): block the caller process<br>
+Wakeup(PID):wake the process whose ID is PID</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code><span class="token comment">// Producer</span>
+<span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">produce</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>count <span class="token operator">==</span> N<span class="token punctuation">)</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">append</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>count <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token function">wakeup</span><span class="token punctuation">(</span>consumer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code><span class="token comment">// Consumer</span>
+<span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>count <span class="token operator">==</span> N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token function">wakeup</span><span class="token punctuation">(</span>producer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">consume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>但是如果出现 wakeup 丢失的情况，就会出现死锁。</p>
+<h2 id="信号量">信号量 </h2>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">Semaphore</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-int">int</span> value<span class="token punctuation">;</span>
+    QueueType queue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token class-name">Semaphore</span><span class="token double-colon punctuation">::</span><span class="token function">P</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    value<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>value <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">add_to_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token class-name">Semaphore</span><span class="token double-colon punctuation">::</span><span class="token function">V</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    value<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>value <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">remove_from_queue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>信号量由操作系统实现。</p>
+<p>信号量实现互斥锁</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code>mutex <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token function">Semaphore</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mutex<span class="token operator">-&gt;</span><span class="token function">P</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 临界区</span>
+mutex<span class="token operator">-&gt;</span><span class="token function">V</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p>信号量实现同步</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code>cond <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token function">Semaphore</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
+<span class="token comment">// Thread 1</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+cond<span class="token operator">-&gt;</span><span class="token function">P</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">{</span>
+<span class="token comment">// Thread 2</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+cond<span class="token operator">-&gt;</span><span class="token function">V</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre><p>信号量解决生产者消费者问题</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code>mutex <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token function">Semaphore</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+empty <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token function">Semaphore</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">;</span>
+full <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token function">Semaphore</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code><span class="token comment">// Producer</span>
+<span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    empty<span class="token operator">-&gt;</span><span class="token function">P</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    mutex<span class="token operator">-&gt;</span><span class="token function">P</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">produce</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    mutex<span class="token operator">-&gt;</span><span class="token function">V</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    full<span class="token operator">-&gt;</span><span class="token function">V</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code><span class="token comment">// Consumer</span>
+<span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    full<span class="token operator">-&gt;</span><span class="token function">P</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    mutex<span class="token operator">-&gt;</span><span class="token function">P</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">consume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    mutex<span class="token operator">-&gt;</span><span class="token function">V</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    empty<span class="token operator">-&gt;</span><span class="token function">V</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="管程">管程 </h2>
+<p>管程是一种高级的同步工具，它是一种数据结构，由数据和对数据的操作组成，数据及对数据的操作被封装在一个模块中，只有通过管程中的操作才能访问数据。</p>
+<h2 id="条件变量">条件变量 </h2>
+<p>条件变量是管程内的等待机制</p>
+<p><img src="image-9.png" alt="Alt text"></p>
+<h1 id="内存管理">内存管理 </h1>
+<p>几个地址概念</p>
+<ul>
+<li>逻辑地址：逻辑地址是段内偏移地址。它是程序员在编程时使用的地址。</li>
+<li>虚拟地址：虚拟地址是在虚拟内存系统中使用的地址。</li>
+<li>线性地址：在分段内存管理系统中（如早期的 x86 架构的保护模式），线性地址是虚拟地址的一种形式，它是通过分段机制转换后的地址。</li>
+<li>物理地址：物理地址是最终用于访问计算机系统中实际物理内存的地址。它是存储单元在物理内存中的实际位置。</li>
+</ul>
+<p>他们之间的转换关系：<br>
+x86: 逻辑地址 --&gt;（段转换）--&gt; 线性地址 --&gt;（页转换）--&gt; 物理地址<br>
+rv: 虚拟地址 --&gt;（页表转换）--&gt; 物理地址</p>
+<h2 id="连续内存分配">连续内存分配 </h2>
+<h3 id="动态分区分配">动态分区分配 </h3>
+<p><img src="image-10.png" alt="Alt text"></p>
+<p>First-fit</p>
+<ul>
+<li>分配和释放的时间性能较好，较大的空闲分区可以被保留在内存高端。</li>
+<li>但随着低端分区不断划分而产生较多小分区，每次分配时查找时间开销会增大。</li>
+</ul>
+<p>Next-fit</p>
+<ul>
+<li>该算法的分配和释放的时间性能较好，使空闲分区分布得更均匀，但较大的空闲分区不易保留。</li>
+</ul>
+<p>Best-fit （最小空间）</p>
+<ul>
+<li>个别来看，外碎片较小，整体来看，会形成较多外碎片。但较大的空闲分区可以被保留。</li>
+</ul>
+<p>Worst-fit（最大空间）（最常用）</p>
+<ul>
+<li>基本不留下小空闲分区，但较大的空闲分区不会被保留。</li>
+</ul>
+<p><img src="image-12.png" alt="Alt text"></p>
+<h2 id="虚拟内存">虚拟内存 </h2>
+<ul>
+<li>覆盖式</li>
+<li>分页式</li>
+<li>分段式</li>
+<li>段页式</li>
+</ul>
+<p><img src="image-16.png" alt="Alt text"></p>
+<p><img src="image-17.png" alt="Alt text"></p>
+<p>x64 的页表是什么样的</p>
+<ul>
+<li>每个页表里面有 512 项</li>
+<li>4k / 8 字节 (64bit) = 512</li>
+<li>因此用于页表项的寻址部分仅有 9 位</li>
+<li>类似的，页目录项也只有 512 项</li>
+<li>页目录项也只有 9 位</li>
+<li>页表扩展为 4 级，每级都是 9 位地址</li>
+<li>寻址空间最大为 256T</li>
+<li>最高的 16 位目前没有使用</li>
+</ul>
+<p><img src="image-15.png" alt="Alt text"></p>
+<h2 id="页面置换算法">页面置换算法 </h2>
+<h3 id="最佳置换算法opt">最佳置换算法（OPT） </h3>
+<p>选择在未来最长时间内不再被访问的页面予以置换。</p>
+<h3 id="先进先出置换算法fifo">先进先出置换算法（FIFO） </h3>
+<p>选择在内存中驻留时间最长的页面予以置换。</p>
+<ul>
+<li>有 Belady 现象</li>
+</ul>
+<h3 id="最近最久未使用置换算法lru">最近最久未使用置换算法（LRU） </h3>
+<p>选择最近一段时间内最久未使用的页面予以置换。</p>
+<ul>
+<li>没有 Belady 现象</li>
+</ul>
+<h3 id="最不常用置换算法lfu">最不常用置换算法（LFU） </h3>
+<p>选择在最近一段时间内访问次数最少的页面予以置换。</p>
+<h3 id="时钟置换算法clock">时钟置换算法（Clock） </h3>
+<p>页面装入内存时，访问位初始化为 0<br>
+访问页面（读/写）时，访问位置 1<br>
+缺页时，从指针当前位置顺序检查环形链表</p>
+<ul>
+<li>访问位为 0，则置换该页</li>
+<li>访问位为 1，则访问位置 0，指针移动到下一个页面，直到找到可置换的页面</li>
+</ul>
+<h3 id="改进型时钟置换算法enhanced-clock">改进型时钟置换算法（Enhanced Clock） </h3>
+<p>在时钟置换算法的基础上，增加了修改位的判断</p>
+<ul>
+<li>访问位为 0，修改位为 0，则置换该页</li>
+<li>访问位为 0，修改位为 1，则修改位置 0，继续检查下一个页面</li>
+<li>访问位为 1，修改位为 0，则访问位置 0，继续检查下一个页面</li>
+<li>访问位为 1，修改位为 1，则访问位置 0，继续检查下一个页面</li>
+</ul>
+<h3 id="工作集">工作集 </h3>
+<p>当前时刻前τ个内存访问的页引用是工作集，τ被称为窗口大小</p>
+<ul>
+<li>访存链表：维护窗口内的访存页面链表</li>
+<li>访存时，换出不在工作集的页面；更新访存链表</li>
+<li>缺页时，换入页面；更新访存链表</li>
+</ul>
+<p><img src="image-24.png" alt="Alt text"></p>
+<h3 id="缺页率算法">缺页率算法 </h3>
+<ul>
+<li>缺页率 = 缺页次数 / 总访问次数</li>
+<li>通过调节常驻集大小，使每个进程的缺页率保持在一个合理的范围内
+<ul>
+<li>若进程缺页率过高，则增加常驻集以分配更多的物理页面</li>
+<li>若进程缺页率过低，则减少常驻集以减少它的物理页面数</li>
+</ul>
+</li>
+<li>访存时，设置引用位标志</li>
+<li>缺页时，计算从上次缺页时间tlast 到现在tcurrent 的时间间隔
+<ul>
+<li>如果 tcurrent – tlast&gt;T, 则置换所有在[tlast ,  tcurrent ]时间内没有被引用的页</li>
+<li>如果 tcurrent – tlast&lt;=T, 则增加缺失页到工作集中</li>
+</ul>
+</li>
+</ul>
+<p><img src="image-25.png" alt="Alt text"></p>
+<h2 id="抖动">抖动 </h2>
+<p><img src="image-18.png" alt="Alt text"></p>
+<h2 id="belady现象">Belady现象 </h2>
+<p>Belady现象是指在采用一些算法（如 FIFO）时，当分配给进程的物理块数增加时，反而出现缺页次数增加的现象。</p>
+<p>原因：FIFO算法的置换特征与进程访问内存的动态特征矛盾，被它置换出去的页面并不一定是进程近期不会访问的，导致Belady的原因是，页框数量增加后，留在内存当中的内容与增加之前无关，从而导致缺页事件的不可预测（增加页框，得到的留在内存中的页面，不一定是增加之前页面集合的超集）</p>
+<hr>
+<h1 id="文件系统">文件系统 </h1>
+<h2 id="存储方式">存储方式 </h2>
+<p><img src="image-19.png" alt="Alt text"></p>
+<p><img src="image-20.png" alt="Alt text"></p>
+<p><img src="image-21.png" alt="Alt text"></p>
+<p><img src="image-22.png" alt="Alt text"></p>
+<p><img src="image-23.png" alt="Alt text"></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

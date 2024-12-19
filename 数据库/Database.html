@@ -1,0 +1,887 @@
+<!DOCTYPE html><html><head>
+      <title>Database</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\15048\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.8\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      <script type="text/javascript" src="file:///c:\Users\15048\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.8\node_modules\@shd101wyy\mume\dependencies\mermaid\mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0">&#x6570;&#x636E;&#x5E93;&#x590D;&#x4E60;&#x7B14;&#x8BB0;</h1>
+
+<p>DDL: &#x6570;&#x636E;&#x5B9A;&#x4E49;&#x8BED;&#x8A00; &#x5982; create drop alter</p>
+<p>DML: &#x6570;&#x636E;&#x64CD;&#x4F5C;&#x8BED;&#x8A00; &#x5982; select insert update delete</p>
+<h2 class="mume-header" id="dbms-%E4%B8%89%E7%BA%A7%E6%A8%A1%E5%BC%8F%E7%BB%93%E6%9E%84">DBMS &#x4E09;&#x7EA7;&#x6A21;&#x5F0F;&#x7ED3;&#x6784;</h2>
+
+<p>View level: &#x5916;&#x6A21;&#x5F0F;&#x3001;&#x5B50;&#x6A21;&#x5F0F;&#x3001;&#x7528;&#x6237;&#x6A21;&#x5F0F;</p>
+<p>Logical Data Independence: &#x903B;&#x8F91;&#x72EC;&#x7ACB;&#x6027;</p>
+<p>Logical level (schema): &#x6A21;&#x5F0F;&#x3001;&#x903B;&#x8F91;&#x6A21;&#x5F0F;</p>
+<p>Physical Data Independence: &#x7269;&#x7406;&#x72EC;&#x7ACB;&#x6027;</p>
+<p>Physical level: &#x7269;&#x7406;&#x6A21;&#x5F0F;&#x3001;&#x5185;&#x6A21;&#x5F0F;&#x3001;&#x5B58;&#x50A8;&#x6A21;&#x5F0F;</p>
+<div class="mermaid">graph LR
+    A[View level] -- Logical Data Independence --&gt; B[Logical level]
+    B -- Physical Data Independence --&gt; C[Physical level]
+</div><div class="mermaid">graph LR
+    A[&#x5916;&#x6A21;&#x5F0F;/&#x5B50;&#x6A21;&#x5F0F;/&#x7528;&#x6237;&#x6A21;&#x5F0F;] -- &#x903B;&#x8F91;&#x72EC;&#x7ACB;&#x6027; --&gt; B[&#x6A21;&#x5F0F;/&#x903B;&#x8F91;&#x6A21;&#x5F0F;]
+    B -- &#x7269;&#x7406;&#x72EC;&#x7ACB;&#x6027; --&gt; C[&#x7269;&#x7406;&#x6A21;&#x5F0F;/&#x5185;&#x6A21;&#x5F0F;/&#x5B58;&#x50A8;&#x6A21;&#x5F0F;]
+</div><h2 class="mume-header" id="%E4%B8%80%E4%BA%9B%E5%AE%9A%E4%B9%89">&#x4E00;&#x4E9B;&#x5B9A;&#x4E49;</h2>
+
+<p>Relation: &#x5173;&#x7CFB;&#xFF0C;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&#x2286;</mo><msub><mi>D</mi><mn>1</mn></msub><mo>&#xD7;</mo><msub><mi>D</mi><mn>2</mn></msub><mo>&#xD7;</mo><mo>&#x22EF;</mo><mo>&#xD7;</mo><msub><mi>D</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">R \subseteq D_1 \times D_2 \times \cdots \times D_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2286;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="minner">&#x22EF;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>Relational schema: &#x5173;&#x7CFB;&#x6A21;&#x5F0F;&#xFF0C;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>A</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>&#x22EF;</mo><mtext>&#x2009;</mtext><mo separator="true">,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R(A_1, A_2, \cdots, A_n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">&#x22EF;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<p>Superkeys: &#x8D85;&#x952E;&#x3001;&#x8D85;&#x7801;&#xFF0C;&#x80FD;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x5143;&#x7EC4;&#x7684;&#x5C5E;&#x6027;&#x96C6;&#xFF0C;&#x8FD9;&#x4E9B;&#x5217;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7EC4;&#x90FD;&#x4E0D;&#x76F8;&#x540C;</p>
+<p>Candidate keys: &#x5019;&#x9009;&#x952E;&#xFF0C;&#x6700;&#x5C0F;&#x7684;&#x8D85;&#x952E;&#xFF0C;&#x6CA1;&#x6709;&#x5197;&#x4F59;&#x7684;&#x8D85;&#x952E;</p>
+<p>Primary key: &#x4E3B;&#x952E;&#x3001;&#x4E3B;&#x7801;&#xFF0C;&#x5019;&#x9009;&#x952E;&#x4E2D;&#x9009;&#x51FA;&#x7684;&#x4E00;&#x4E2A;&#x4F5C;&#x4E3A;&#x4E3B;&#x952E;</p>
+<p>Foreign key: &#x5916;&#x952E;&#xFF0C;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x6216;&#x5C5E;&#x6027;&#x7EC4;&#xFF0C;&#x5B83;&#x7684;&#x503C;&#x5FC5;&#x987B;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#x7684;</p>
+<p>Entity integrity: &#x5B9E;&#x4F53;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x4E3B;&#x952E;&#x4E0D;&#x80FD;&#x4E3A; null&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x91CD;&#x590D;</p>
+<p>Referential integrity: &#x53C2;&#x7167;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x5916;&#x952E;&#x7684;&#x503C;&#x5FC5;&#x987B;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#x7684;&#x4E3B;&#x952E;&#x4E2D;&#x5B58;&#x5728;</p>
+<h2 class="mume-header" id="er-%E5%9B%BE%E6%A8%A1%E5%9E%8B">ER &#x56FE;&#x6A21;&#x578B;</h2>
+
+<p>Entity: &#x5B9E;&#x4F53;<br>
+Entity set: &#x5B9E;&#x4F53;&#x96C6;&#x5408;&#xFF0C;&#x7528;&#x77E9;&#x5F62;&#x8868;&#x793A;<br>
+Attribute: &#x5C5E;&#x6027;&#xFF0C;&#x7528;&#x692D;&#x5706;&#x8868;&#x793A;<br>
+Relationship: &#x5173;&#x7CFB;&#xFF0C;&#x7528;&#x83F1;&#x5F62;&#x8868;&#x793A;<br>
+Relationship set: &#x5173;&#x7CFB;&#x96C6;&#x5408;<br>
+one-one: &#x4E00;&#x5BF9;&#x4E00;&#xFF0C;&#x7528;&#x4E24;&#x7AEF;&#x7BAD;&#x5934;&#x8868;&#x793A;&#xFF1A;<br>
+<img src="assets\ER_one_one.png" alt="ER_one_one"><br>
+many-one: &#x591A;&#x5BF9;&#x4E00;&#xFF0C;&#x7528;&#x4E00;&#x7AEF;&#x7BAD;&#x5934;&#x8868;&#x793A;&#xFF1A;<br>
+<img src="assets\ER_one_many.png" alt="ER_one_many"><br>
+many-many: &#x591A;&#x5BF9;&#x591A;&#xFF0C;&#x7528;&#x76F4;&#x7EBF;&#x8868;&#x793A;&#xFF1A;<br>
+<img src="assets\ER_many_many.png" alt="ER_many_many"><br>
+&#x7528;&#x4E00;&#x7AEF;&#x5706;&#x7BAD;&#x5934;&#x8868;&#x793A;&#x6709;&#x4E14;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#xFF1A;<br>
+<img src="assets\must_one.png" alt="must_one"><br>
+&#x8FD9;&#x91CC;&#x6307;&#x6BCF;&#x4E2A;Manfs&#x6709;&#x4E14;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;Beers&#x4F5C;&#x4E3A;Bestseller<br>
+<img src="assets\ER_multiple.png" alt="ER_multiple"><br>
+&#x8FD9;&#x91CC;&#x53EA;&#x8981;&#x77E5;&#x9053;Star&#x548C;Movie&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;Studio<br>
+<img src="assets\inherit.png" alt="inherit"><br>
+&#x5B50;&#x7C7B;&#x7EE7;&#x627F;&#x7236;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x540C;&#x65F6;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x5C5E;&#x6027;<br>
+Week Entity Set: &#x5F31;&#x5B9E;&#x4F53;&#x96C6;&#x5408;&#xFF0C;&#x7528;&#x53CC;&#x8FB9;&#x6846;&#x8868;&#x793A;<br>
+Many-one Supporting relationship: &#x5F31;&#x5B9E;&#x4F53;&#x96C6;&#x5408;&#x7684;&#x591A;&#x5BF9;&#x4E00;&#x652F;&#x6301;&#x5173;&#x7CFB;&#xFF0C;&#x7528;&#x53CC;&#x83F1;&#x5F62;&#x8868;&#x793A;<br>
+<img src="assets\Week.png" alt="Week"><br>
+&#x6B64;&#x65F6;Players&#x7684;&#x4E3B;&#x952E;&#x662F;(TeamName, number)&#xFF0C;&#x800C;&#x4E0D;&#x662F;number</p>
+<p>ER &#x56FE;&#x8F6C;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#xFF08;&#x6EE1;&#x8DB3; 3NF&#xFF09;:</p>
+<ol>
+<li>&#x5B9E;&#x4F53;&#x96C6;&#x5408;&#x4E0E;&#x5176;&#x5C5E;&#x6027;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x578B;</li>
+<li>&#x5173;&#x7CFB;&#x96C6;&#x5408;&#x4E24;&#x7AEF;&#x5B9E;&#x4F53;&#x96C6;&#x5408;&#x7684;&#x4E3B;&#x952E;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x578B;</li>
+<li>many-one &#x652F;&#x6301;&#x5173;&#x7CFB; many &#x7AEF;&#x53EF;&#x4EE5;&#x5C06; one &#x7AEF;&#x7684;&#x4E3B;&#x952E;&#x4F5C;&#x4E3A;&#x5916;&#x952E;&#xFF0C;&#x4E0E;&#x652F;&#x6301;&#x5173;&#x7CFB;&#x5408;&#x5E76;</li>
+<li>one-one &#x652F;&#x6301;&#x5173;&#x7CFB;&#x53EF;&#x4EE5;&#x5C06;&#x53E6;&#x4E00;&#x7AEF;&#x7684;&#x4E3B;&#x952E;&#x4F5C;&#x4E3A;&#x5916;&#x952E;&#xFF0C;&#x4E0E;&#x652F;&#x6301;&#x5173;&#x7CFB;&#x5408;&#x5E76;</li>
+<li>&#x5F31;&#x5B9E;&#x4F53;&#x96C6;&#x5408;&#x627E;&#x51FA;&#x6240;&#x6709;&#x952E;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4E0E;&#x652F;&#x6301;&#x5173;&#x7CFB;&#x5408;&#x5E76;</li>
+<li>&#x5B50;&#x7C7B;O-O Approach: &#x6BCF;&#x4E2A;&#x5B50;&#x7C7B;&#x7EE7;&#x627F;&#x7236;&#x7C7B;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x81EA;&#x5DF1;&#x7684;&#x5C5E;&#x6027;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#xFF0C;&#x7236;&#x7C7B;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x578B;</li>
+<li>&#x5B50;&#x7C7B;E/R Approach: &#x6BCF;&#x4E2A;&#x5B50;&#x7C7B;&#x5C06;&#x7236;&#x7C7B;&#x7684;&#x952E;&#x548C;&#x81EA;&#x5DF1;&#x7684;&#x5C5E;&#x6027;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#xFF0C;&#x7236;&#x7C7B;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#xFF0C;&#x5B50;&#x7C7B;&#x7684;&#x4E3B;&#x952E;&#x4F5C;&#x4E3A;&#x5916;&#x952E;&#x6307;&#x5411;&#x7236;&#x7C7B;&#x7684;&#x4E3B;&#x952E;</li>
+<li>&#x5B50;&#x7C7B;Null Value Approach: &#x6BCF;&#x7236;&#x7C7B;&#x548C;&#x5B50;&#x7C7B;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#xFF0C;&#x6CA1;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x7528; null &#x503C;&#x586B;&#x5145;&#x3002;</li>
+</ol>
+<p><img src="assets\Subclas.png" alt="Subclas"><br>
+O-O Approach:<br>
+Product(<u>name</u>, price, category, manufacturer)<br>
+SoftwareProduct(<u>name</u>, price, category, manufacturer, platforms, requiredMemory)<br>
+EducationalProduct(<u>name</u>, price, category, manufacturer, ageGroup, topic)</p>
+<p>E/R Approach:<br>
+Product(<u>name</u>, price, category, manufacturer)<br>
+SoftwareProduct(<u>name</u>, platforms, requiredMemory)<br>
+EducationalProduct(<u>name</u>, ageGroup, topic)</p>
+<p>Null Value Approach:<br>
+Product(<u>name</u>, price, category, manufacturer, platforms, requiredMemory, ageGroup, topic)</p>
+<p>Integrity constraints: &#x5B8C;&#x6574;&#x6027;&#x7EA6;&#x675F;<br>
+Entity integrity: &#x5B9E;&#x4F53;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x4E3B;&#x952E;&#x4E0D;&#x80FD;&#x4E3A; null&#xFF08;&#x90E8;&#x5206;&#x4E3A;&#x7A7A;&#x4E5F;&#x4E0D;&#x884C;&#xFF09;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x91CD;&#x590D;<br>
+Referential integrity: &#x53C2;&#x7167;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x5916;&#x952E;&#x7684;&#x503C;&#x5FC5;&#x987B;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x578B;&#x7684;&#x4E3B;&#x952E;&#x4E2D;&#x5B58;&#x5728;&#x6216;&#x8005;&#x4E3A; null<br>
+User-defined integrity: &#x7528;&#x6237;&#x5B9A;&#x4E49;&#x5B8C;&#x6574;&#x6027;</p>
+<p>if <a href="http://S.FK">S.FK</a> references <a href="http://R.PK">R.PK</a> then<br>
+insert into S(<a href="http://S.PK">S.PK</a>, <a href="http://S.FK">S.FK</a>) values (<a href="http://S.pk">S.pk</a>, <a href="http://S.fk">S.fk</a>) is legal if <a href="http://S.fk">S.fk</a> is null or <a href="http://S.fk">S.fk</a> is in <a href="http://R.PK">R.PK</a><br>
+when delete from R where <a href="http://R.pk">R.pk</a> = v, all tuples in S with <a href="http://S.fk">S.fk</a> = v must be deleted (cascade delete) or its illegal</p>
+<h2 class="mume-header" id="sql-%E8%AF%AD%E5%8F%A5">SQL &#x8BED;&#x53E5;</h2>
+
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-CREATE">CREATE</span> <span class="token keyword keyword-TABLE">TABLE</span> Student <span class="token punctuation">(</span>
+    sid <span class="token keyword keyword-CHAR">CHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+    name <span class="token keyword keyword-CHAR">CHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token keyword keyword-UNIQUE">UNIQUE</span><span class="token punctuation">,</span>
+    age <span class="token keyword keyword-INTEGER">INTEGER</span> <span class="token keyword keyword-DEFAULT">DEFAULT</span> <span class="token number">20</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+    score <span class="token keyword keyword-INTEGER">INTEGER</span> <span class="token keyword keyword-REFERENCES">REFERENCES</span> Exam<span class="token punctuation">(</span>score<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    check1 <span class="token keyword keyword-INTEGER">INTEGER</span> <span class="token keyword keyword-CHECK">CHECK</span> <span class="token punctuation">(</span>score <span class="token operator">&gt;</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    ref1 <span class="token keyword keyword-INTEGER">INTEGER</span><span class="token punctuation">,</span>
+    ref2 <span class="token keyword keyword-INTEGER">INTEGER</span><span class="token punctuation">,</span>
+    <span class="token keyword keyword-PRIMARY">PRIMARY</span> <span class="token keyword keyword-KEY">KEY</span> <span class="token punctuation">(</span>sid<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword keyword-UNIQUE">UNIQUE</span> <span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword keyword-FOREIGN">FOREIGN</span> <span class="token keyword keyword-KEY">KEY</span> <span class="token punctuation">(</span>ref1<span class="token punctuation">,</span> ref2<span class="token punctuation">)</span> <span class="token keyword keyword-REFERENCES">REFERENCES</span> Table1 <span class="token punctuation">(</span>attr1<span class="token punctuation">,</span> attr2<span class="token punctuation">)</span> 
+    <span class="token keyword keyword-ON">ON</span> <span class="token punctuation">[</span><span class="token keyword keyword-DELETE">DELETE</span><span class="token operator">/</span><span class="token keyword keyword-UPDATE">UPDATE</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword keyword-CASCADE">CASCADE</span><span class="token operator">/</span><span class="token keyword keyword-SET">SET</span> <span class="token boolean">NULL</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token keyword keyword-CHECK">CHECK</span> <span class="token punctuation">(</span>ref1 <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">AND</span> ref2 <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-ALTER">ALTER</span> <span class="token keyword keyword-TABLE">TABLE</span> Student <span class="token keyword keyword-ADD">ADD</span> <span class="token keyword keyword-CHECK">CHECK</span> <span class="token punctuation">(</span>score <span class="token operator">&gt;</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-ALTER">ALTER</span> <span class="token keyword keyword-TABLE">TABLE</span> Student <span class="token keyword keyword-ADD">ADD</span> phone <span class="token keyword keyword-CHAR">CHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-ALTER">ALTER</span> <span class="token keyword keyword-TABLE">TABLE</span> Student <span class="token keyword keyword-DROP">DROP</span> <span class="token keyword keyword-COLUMN">COLUMN</span> phone<span class="token punctuation">;</span>
+</pre><p>UNIQUE &#x7684;&#x5C5E;&#x6027;&#x4E0D;&#x80FD;&#x91CD;&#x590D;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A; null &#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x6709;&#x4E24;&#x4E2A; null<br>
+PRIMARY KEY &#x4E0D;&#x80FD;&#x4E3A; null<br>
+<em>&#x4E0D;&#x80FD;&#x6709;&#x4E24;&#x4E2A; PRIMARY KEY &#x5982;&#xFF1A;sid INTEGER PRIMARY KEY, name CHAR(20) PRIMARY KEY</em><br>
+NOT NULL &#x4E0D;&#x80FD;&#x4E3A; null<br>
+a INTEGER UNIQUE, b INTEGER UNIQUE &#x4E0E; UNIQUE (a, b) &#x4E0D;&#x540C;&#xFF0C;&#x524D;&#x8005; a b &#x5217;&#x5185;&#x4E0D;&#x80FD;&#x91CD;&#x590D;&#xFF0C;&#x540E;&#x8005; a b &#x7EC4;&#x5408;&#x4E0D;&#x80FD;&#x91CD;&#x590D;<br>
+ON DELETE CASCADE: &#x5220;&#x9664;&#x4E3B;&#x8868;&#x7684;&#x5143;&#x7EC4;&#x65F6;&#xFF0C;&#x4ECE;&#x8868;&#x7684;&#x5143;&#x7EC4;&#x4E5F;&#x5220;&#x9664;<br>
+ON DELETE SET NULL: &#x5220;&#x9664;&#x4E3B;&#x8868;&#x7684;&#x5143;&#x7EC4;&#x65F6;&#xFF0C;&#x4ECE;&#x8868;&#x7684;&#x5143;&#x7EC4;&#x7684;&#x5916;&#x952E;&#x503C;&#x8BBE;&#x4E3A; null<br>
+<em>FOREIGN KEY (ref1) REFERENCES Table1 (attr1) &#x5FC5;&#x987B;&#x5E26;&#x62EC;&#x53F7;</em> ??&#x5F85;&#x5B9A;<br>
+<em>CHECK &#x53EA;&#x4F1A;&#x5728;&#x63D2;&#x5165;&#x65F6;&#x68C0;&#x67E5;&#xFF0C;&#x5176;&#x4ED6;&#x8868;&#x66F4;&#x65B0;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4; CHECK &#x4E0D;&#x6EE1;&#x8DB3;</em></p>
+<p>&#x67E5;&#x8BE2;&#x4E0A;&#x673A;&#x8003;&#x8FC7;&#xFF0C;&#x4E0D;&#x591A;&#x8BF4;&#x4E86;</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-SELECT">SELECT</span> <span class="token keyword keyword-DISTINCT">DISTINCT</span> name 
+<span class="token keyword keyword-FROM">FROM</span> Student 
+<span class="token keyword keyword-WHERE">WHERE</span> name <span class="token operator">=</span> <span class="token string">&apos;Tom&apos;&apos;s name&apos;</span> <span class="token operator">OR</span> name <span class="token operator">LIKE</span> <span class="token string">&apos;Tom%&apos;</span><span class="token punctuation">;</span>
+</pre><pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-SELECT">SELECT</span> name<span class="token punctuation">,</span> score<span class="token operator">*</span><span class="token number">2</span> <span class="token keyword keyword-AS">AS</span> double_score 
+<span class="token keyword keyword-FROM">FROM</span> Student 
+<span class="token keyword keyword-WHERE">WHERE</span> age <span class="token operator">&gt;</span> <span class="token number">20</span> <span class="token operator">AND</span> score <span class="token operator">&gt;</span> <span class="token number">60</span> <span class="token operator">AND</span> NAME <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
+<span class="token keyword keyword-ORDER">ORDER</span> <span class="token keyword keyword-BY">BY</span> score <span class="token keyword keyword-DESC">DESC</span><span class="token punctuation">,</span> name <span class="token keyword keyword-ASC">ASC</span><span class="token punctuation">;</span>
+</pre><p>SQL &#x4F7F;&#x7528;&#x4E09;&#x503C;&#x903B;&#x8F91;&#xFF0C;TRUE FALSE UNKNOWN<br>
+NULL &#x4E0E;&#x4EFB;&#x4F55;&#x503C;&#x6BD4;&#x8F83;&#x90FD;&#x662F; UNKNOWN&#xFF0C;UNKNOWN AND/OR/NOT &#x90FD;&#x662F;UNKNOWN<br>
+WHERE &#x53EA;&#x5728;TRUE&#x65F6;&#x624D;&#x8FD4;&#x56DE;&#xFF0C;FALSE/UNKNOWN&#x65F6;&#x4E0D;&#x8FD4;&#x56DE;<br>
+Find pairs of beers by the same manufacturer</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-SELECT">SELECT</span> b1<span class="token punctuation">.</span>name<span class="token punctuation">,</span> b2<span class="token punctuation">.</span>name
+<span class="token keyword keyword-FROM">FROM</span> Beers b1<span class="token punctuation">,</span> Beers b2
+<span class="token keyword keyword-WHERE">WHERE</span> b1<span class="token punctuation">.</span>manf <span class="token operator">=</span> b2<span class="token punctuation">.</span>manf <span class="token operator">AND</span> b1<span class="token punctuation">.</span>name <span class="token operator">&lt;</span> b2<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+</pre><p>Find the name and manufacturer of beers that Fred likes.</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-SELECT">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword keyword-FROM">FROM</span> Beers
+<span class="token keyword keyword-WHERE">WHERE</span> name <span class="token operator">IN</span> <span class="token punctuation">(</span>
+    <span class="token keyword keyword-SELECT">SELECT</span> beer
+    <span class="token keyword keyword-FROM">FROM</span> Likes
+    <span class="token keyword keyword-WHERE">WHERE</span> drinker <span class="token operator">=</span> <span class="token string">&apos;Fred&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>Find the beers that are the unique beer by their manufacturer.</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql">ELECT name
+<span class="token keyword keyword-FROM">FROM</span> Beers b1
+<span class="token keyword keyword-WHERE">WHERE</span> <span class="token operator">NOT</span> <span class="token keyword keyword-EXISTS">EXISTS</span> <span class="token punctuation">(</span>
+    <span class="token keyword keyword-SELECT">SELECT</span> <span class="token operator">*</span>
+    <span class="token keyword keyword-FROM">FROM</span> Beers
+    <span class="token keyword keyword-WHERE">WHERE</span> manf <span class="token operator">=</span> b1<span class="token punctuation">.</span>manf
+    <span class="token operator">AND</span> name <span class="token operator">&lt;&gt;</span> b1<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>Find the beer(s) sold for the highest price.</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-SELECT">SELECT</span> beer
+<span class="token keyword keyword-FROM">FROM</span> Sells
+<span class="token keyword keyword-WHERE">WHERE</span> price <span class="token operator">&gt;=</span> <span class="token keyword keyword-ALL">ALL</span><span class="token punctuation">(</span><span class="token keyword keyword-SELECT">SELECT</span> price
+<span class="token keyword keyword-FROM">FROM</span> Sells<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>Find the beer(s) not sold for the lowest price.</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-SELECT">SELECT</span> beer
+<span class="token keyword keyword-FROM">FROM</span> Sells
+<span class="token keyword keyword-WHERE">WHERE</span> price <span class="token operator">&gt;</span> <span class="token keyword keyword-ANY">ANY</span><span class="token punctuation">(</span><span class="token keyword keyword-SELECT">SELECT</span> price
+<span class="token keyword keyword-FROM">FROM</span> Sells<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>INTERSECTION &#x4EA4;&#x96C6; UNION &#x5E76;&#x96C6; EXCEPT &#x5DEE;&#x96C6;</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token punctuation">(</span><span class="token keyword keyword-SELECT">SELECT</span> <span class="token operator">*</span> <span class="token keyword keyword-FROM">FROM</span> Likes<span class="token punctuation">)</span>
+<span class="token keyword keyword-INTERSECT">INTERSECT</span>
+<span class="token punctuation">(</span><span class="token keyword keyword-SELECT">SELECT</span> drinker<span class="token punctuation">,</span> beer
+<span class="token keyword keyword-FROM">FROM</span> Sells<span class="token punctuation">,</span> Frequents
+<span class="token keyword keyword-WHERE">WHERE</span> Frequents<span class="token punctuation">.</span>bar <span class="token operator">=</span> Sells<span class="token punctuation">.</span>bar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>Aggregate functions: COUNT, SUM, AVG, MIN, MAX<br>
+Each element of a SELECT clause must either be aggregated or appear in a group-by clause.</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-SELECT">SELECT</span> beer<span class="token punctuation">,</span> <span class="token function">AVG</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span>
+<span class="token keyword keyword-FROM">FROM</span> Sells
+<span class="token keyword keyword-GROUP">GROUP</span> <span class="token keyword keyword-BY">BY</span> beer<span class="token punctuation">;</span>
+</pre><p>HAVING is like WHERE but for groups.</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-SELECT">SELECT</span> beer<span class="token punctuation">,</span> <span class="token function">AVG</span><span class="token punctuation">(</span>price<span class="token punctuation">)</span>
+<span class="token keyword keyword-FROM">FROM</span> Sells
+<span class="token keyword keyword-GROUP">GROUP</span> <span class="token keyword keyword-BY">BY</span> beer
+<span class="token keyword keyword-HAVING">HAVING</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">3</span>
+</pre><pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-INSERT">INSERT</span> <span class="token keyword keyword-INTO">INTO</span> Student <span class="token punctuation">(</span>sid<span class="token punctuation">,</span> name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> score<span class="token punctuation">)</span> <span class="token keyword keyword-VALUES">VALUES</span> <span class="token punctuation">(</span><span class="token string">&apos;1&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;Tom&apos;</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-DELETE">DELETE</span> <span class="token keyword keyword-FROM">FROM</span> Student <span class="token keyword keyword-WHERE">WHERE</span> sid <span class="token operator">=</span> <span class="token string">&apos;1&apos;</span><span class="token punctuation">;</span>
+</pre><pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-UPDATE">UPDATE</span> Student <span class="token keyword keyword-SET">SET</span> score <span class="token operator">=</span> score <span class="token operator">+</span> <span class="token number">10</span> <span class="token keyword keyword-WHERE">WHERE</span> sid <span class="token operator">=</span> <span class="token string">&apos;1&apos;</span><span class="token punctuation">;</span>
+</pre><pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-CREATE">CREATE</span> <span class="token keyword keyword-TRIGGER">TRIGGER</span> update_score
+<span class="token keyword keyword-AFTER">AFTER</span> <span class="token keyword keyword-INSERT">INSERT</span> <span class="token keyword keyword-ON">ON</span> Student
+<span class="token keyword keyword-FOR EACH ROW">FOR EACH ROW</span>
+<span class="token keyword keyword-BEGIN">BEGIN</span>
+    <span class="token keyword keyword-UPDATE">UPDATE</span> Student <span class="token keyword keyword-SET">SET</span> score <span class="token operator">=</span> score <span class="token operator">+</span> <span class="token number">10</span> <span class="token keyword keyword-WHERE">WHERE</span> sid <span class="token operator">=</span> NEW<span class="token punctuation">.</span>sid<span class="token punctuation">;</span>
+<span class="token keyword keyword-END">END</span><span class="token punctuation">;</span>
+</pre><pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-CREATE">CREATE</span> <span class="token keyword keyword-TRIGGER">TRIGGER</span> test
+BEFORE <span class="token keyword keyword-INSERT">INSERT</span> <span class="token keyword keyword-ON">ON</span> Student
+<span class="token keyword keyword-FOR EACH ROW">FOR EACH ROW</span>
+<span class="token keyword keyword-BEGIN">BEGIN</span>
+    <span class="token keyword keyword-IF">IF</span> NEW<span class="token punctuation">.</span>score <span class="token operator">&lt;</span> <span class="token number">60</span> <span class="token keyword keyword-THEN">THEN</span>
+        <span class="token keyword keyword-INSERT">INSERT</span> <span class="token keyword keyword-INTO">INTO</span> Test <span class="token keyword keyword-VALUES">VALUES</span> <span class="token punctuation">(</span>NEW<span class="token punctuation">.</span>sid<span class="token punctuation">,</span> NEW<span class="token punctuation">.</span>name<span class="token punctuation">,</span> NEW<span class="token punctuation">.</span>score<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-END">END</span> <span class="token keyword keyword-IF">IF</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-END">END</span><span class="token punctuation">;</span>
+</pre><pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-CREATE">CREATE</span> <span class="token keyword keyword-VIEW">VIEW</span> GoodStudent <span class="token keyword keyword-AS">AS</span>
+<span class="token keyword keyword-SELECT">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword keyword-FROM">FROM</span> Student
+<span class="token keyword keyword-WHERE">WHERE</span> score <span class="token operator">&gt;</span> <span class="token number">60</span><span class="token punctuation">;</span>
+</pre><pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-GRANT">GRANT</span> <span class="token keyword keyword-SELECT">SELECT</span><span class="token punctuation">,</span> <span class="token keyword keyword-INSERT">INSERT</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span> 
+<span class="token keyword keyword-ON">ON</span> Student 
+<span class="token keyword keyword-TO">TO</span> Tom
+<span class="token keyword keyword-WITH">WITH</span> <span class="token keyword keyword-GRANT">GRANT</span> <span class="token keyword keyword-OPTION">OPTION</span><span class="token punctuation">;</span>
+</pre><pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-REVOKE">REVOKE</span> <span class="token keyword keyword-SELECT">SELECT</span><span class="token punctuation">,</span> <span class="token keyword keyword-INSERT">INSERT</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span>
+<span class="token keyword keyword-ON">ON</span> Student
+<span class="token keyword keyword-FROM">FROM</span> Tom<span class="token punctuation">;</span>
+</pre><h2 class="mume-header" id="%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">&#x6570;&#x636E;&#x5E93;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;</h2>
+
+<p>&#x4E09;&#x79CD;&#x5F02;&#x5E38;&#x548C;&#x5197;&#x4F59;<br>
+&#x5197;&#x4F59; Redundancy = repetition of data<br>
+&#x66F4;&#x65B0;&#x5F02;&#x5E38; update anomalies = update one item and forget others = inconsistencies<br>
+&#x5220;&#x9664;&#x5F02;&#x5E38; deletion anomalies = delete many items, delete one item, loose other information<br>
+&#x63D2;&#x5165;&#x5F02;&#x5E38; insertion anomalies = can&apos;t insert one item without inserting others</p>
+<p>&#x63D2;&#x5165;&#xFF1A;&#x60F3;&#x5F55;&#x5165;&#x4E00;&#x4E2A;&#x8BFE;&#x7A0B;&#xFF0C;&#x4F46;&#x662F;&#x5FC5;&#x987B;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x5B66;&#x751F;<br>
+&#x5220;&#x9664;&#xFF1A;&#x5220;&#x9664;&#x4E86;&#x5B66;&#x751F;&#xFF0C;&#x53EF;&#x80FD;&#x6709;&#x4E9B;&#x8BFE;&#x7A0B;&#x90FD;&#x88AB;&#x5220;&#x4E86;&#xFF0C;&#x5C31;&#x4E0D;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E86;<br>
+&#x66F4;&#x65B0;&#xFF1A;&#x6539;&#x8BFE;&#x7A0B;&#x540D;&#x79F0;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x6240;&#x6709;&#x5730;&#x65B9;&#x90FD;&#x4FEE;&#x6539;</p>
+<p>&#x51FD;&#x6570;&#x4F9D;&#x8D56; FD&#xFF1A;X -&gt; Y&#xFF0C;&#x82E5; X -&gt; Y &#x662F;Many-to-one&#xFF0C;&#x5219;&#x79F0; Y &#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x4E8E; X<br>
+Superkey &#x8D85;&#x952E;: &#x80FD;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x5143;&#x7EC4;&#x7684;&#x5C5E;&#x6027;&#x96C6;&#xFF0C;&#x8FD9;&#x4E9B;&#x5217;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7EC4;&#x90FD;&#x4E0D;&#x76F8;&#x540C;<br>
+Key &#x952E;: &#x8D85;&#x952E;&#x4E2D;&#x7684;&#x6700;&#x5C0F;&#x7684;&#x8D85;&#x952E;</p>
+<p>E/R &#x56FE;&#x4E2D;&#x627E;Key&#xFF1A;</p>
+<ol>
+<li>&#x5B9E;&#x4F53;&#x96C6;&#x5408;&#x7684;&#x4E3B;&#x952E;&#x5C31;&#x662F;Key</li>
+<li>many-many&#x5173;&#x7CFB;&#x96C6;&#x5408;&#x4E24;&#x7AEF;&#x5B9E;&#x4F53;&#x96C6;&#x5408;&#x7684;&#x4E3B;&#x952E;&#x6784;&#x6210;Key</li>
+<li>may-one&#x5173;&#x7CFB;&#x96C6;&#x5408;many&#x7AEF;&#x5B9E;&#x4F53;&#x96C6;&#x5408;&#x7684;&#x4E3B;&#x952E;&#x6784;&#x6210;Key</li>
+</ol>
+<p>&#x51FD;&#x6570;&#x95ED;&#x5305;&#xFF1A;X+ = X U {Y | X -&gt; Y}<br>
+Armstrong&apos;s Axioms:</p>
+<ol>
+<li>Reflexivity: XY -&gt; Y</li>
+<li>Augmentation: X -&gt; Y implies XZ -&gt; YZ</li>
+<li>Transitivity: X -&gt; Y and Y -&gt; Z implies X -&gt; Z</li>
+<li>Union: X -&gt; Y and X -&gt; Z implies X -&gt; YZ</li>
+<li>Decomposition: X -&gt; YZ implies X -&gt; Y and X -&gt; Z</li>
+<li>Pseudotransitivity: X -&gt; Y and WY -&gt; Z implies WX -&gt; Z<br>
+&#x8BA1;&#x7B97;&#x65B9;&#x6CD5;&#xFF1A;<br>
+&#x9010;&#x4E2A;&#x68C0;&#x67E5;&#x6BCF;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x770B;&#x662F;&#x5426;&#x80FD;&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;&#x89C4;&#x5219;&#x63A8;&#x51FA;&#x5176;&#x4ED6;&#x5C5E;&#x6027;&#xFF0C;&#x76F4;&#x5230;&#x4E0D;&#x80FD;&#x63A8;&#x51FA;&#x4E3A;&#x6B62;</li>
+</ol>
+<p>&#x627E;Key&#xFF1A;</p>
+<ol>
+<li>&#x4E0D;&#x5728;&#x4EFB;&#x4F55;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x7684;&#x53F3;&#x8FB9;&#x7684;&#x5C5E;&#x6027;&#x4E00;&#x5B9A;&#x5728;Key&#x4E2D;</li>
+<li>&#x4E0D;&#x5728;&#x4EFB;&#x4F55;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x7684;&#x5DE6;&#x8FB9;&#x7684;&#x5C5E;&#x6027;&#x4E00;&#x5B9A;&#x4E0D;&#x5728;Key&#x4E2D;</li>
+<li>&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x9010;&#x4E2A;&#x68C0;&#x67E5;&#x96C6;&#x5408;&#xFF0C;&#x770B;&#x5176;&#x95ED;&#x5305;&#x662F;&#x5426;&#x5305;&#x542B;&#x6240;&#x6709;&#x5C5E;&#x6027;&#xFF0C;&#x5305;&#x542B;&#x5219;&#x662F;Key</li>
+</ol>
+<p>&#x8868;&#x7684;&#x62C6;&#x5206;&#xFF1A;<br>
+&#x65E0;&#x635F;&#x5206;&#x89E3;&#xFF1A;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;R&#xFF0C;&#x5206;&#x89E3;&#x4E3A;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;R1&#xFF0C;R2&#xFF0C;...&#xFF0C;Rn&#xFF0C;R1 U R2 U ... U Rn = R<br>
+&#x5224;&#x65AD;&#xFF1A;<br>
+&#x4E24;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;&#x5171;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x662F;&#x952E;&#xFF0C;&#x5219;&#x65E0;&#x635F;&#x5206;&#x89E3;<br>
+&#x4E09;&#x4E2A;&#x4EE5;&#x4E0A;&#x7528; <a href="https://blog.csdn.net/Wonz5130/article/details/80502746">&#x5217;&#x8868;&#x6CD5;</a><br>
+&#x4FDD;&#x6301;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#xFF1A;&#x5C06;R&#x5206;&#x89E3;&#x4E3A;R1, R2&#xFF0C;R1&#x4E0A;&#x7684;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x4E3A;S1&#xFF0C;R2&#x4E0A;&#x7684;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x4E3A;S2&#xFF0C;(S1 U S2)+ = S+</p>
+<h3 class="mume-header" id="1nf-%E6%AF%8F%E4%B8%AA%E5%B1%9E%E6%80%A7%E9%83%BD%E6%98%AF%E4%B8%8D%E5%8F%AF%E5%88%86%E7%9A%84%E5%8E%9F%E5%AD%90%E6%80%A7">1NF: &#x6BCF;&#x4E2A;&#x5C5E;&#x6027;&#x90FD;&#x662F;&#x4E0D;&#x53EF;&#x5206;&#x7684;(&#x539F;&#x5B50;&#x6027;)</h3>
+
+<h3 class="mume-header" id="2nf-%E6%AF%8F%E4%B8%AA%E9%9D%9E%E4%B8%BB%E5%B1%9E%E6%80%A7%E5%AE%8C%E5%85%A8%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E4%BA%8E%E4%B8%BB%E9%94%AE">2NF: &#x6BCF;&#x4E2A;&#x975E;&#x4E3B;&#x5C5E;&#x6027;&#x5B8C;&#x5168;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x4E8E;&#x4E3B;&#x952E;</h3>
+
+<h3 class="mume-header" id="3nf-%E6%AF%8F%E4%B8%AA%E9%9D%9E%E4%B8%BB%E5%B1%9E%E6%80%A7%E4%B8%8D%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E4%BA%8E%E4%B8%BB%E9%94%AE">3NF: &#x6BCF;&#x4E2A;&#x975E;&#x4E3B;&#x5C5E;&#x6027;&#x4E0D;&#x4F20;&#x9012;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x4E8E;&#x4E3B;&#x952E;</h3>
+
+<p><strong>&#x5224;&#x5B9A;</strong>&#xFF1A;&#x6240;&#x6709;&#x975E;&#x5E73;&#x51E1;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x5DE6;&#x4FA7;&#x90FD;&#x662F;&#x8D85;&#x952E;&#xFF0C;&#x6216;&#x53F3;&#x4FA7;&#x662F;&#x4E3B;&#x5C5E;&#x6027;<br>
+<em>&#x4E3B;&#x5C5E;&#x6027;&#xFF1A;&#x5019;&#x9009;&#x952E;&#x4E2D;&#x51FA;&#x73B0;&#x8FC7;&#x7684;&#x5C5E;&#x6027;</em></p>
+<p><strong>&#x5206;&#x89E3;&#x4E3A;3NF</strong></p>
+<ol>
+<li>&#x6C42;&#x6781;&#x5C0F;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x96C6;&#x5408;Smin&#x548C;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;&#x7684;&#x6240;&#x6709;&#x952E;</li>
+<li>&#x5728;Smin&#x4E2D;&#x6309;&#x7167;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x5DE6;&#x90E8;&#x76F8;&#x540C;&#x539F;&#x5219;&#x5206;&#x7EC4;&#xFF0C;&#x5F97;&#x5230;S1, S2, ...&#xFF0C;&#x6BCF;&#x4E2A;Si&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;</li>
+<li>&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;Si&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;&#x90FD;&#x5728;&#x67D0;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;Sj&#x4E2D;&#xFF0C;&#x5219;&#x5220;&#x9664;Si</li>
+<li>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x67D0;&#x4E2A;&#x952E;&#x51FA;&#x73B0;&#x5728;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;&#x4E2D;&#xFF0C;&#x5219;&#x6DFB;&#x52A0;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x952E;&#x4F5C;&#x4E3A;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;</li>
+</ol>
+<p><em>&#x6700;&#x5C0F;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x96C6;&#x5408;&#xFF1A;</em></p>
+<ol>
+<li>F&#x4E2D;&#x7684;&#x6240;&#x6709;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x53F3;&#x4FA7;&#x4EC5;&#x542B;&#x6709;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;</li>
+<li>F&#x4E2D;&#x4E0D;&#x5B58;&#x5728;X -&gt; Y&#xFF0C;&#x4F7F;F&#x4E0E;F - {X -&gt; Y}&#x7B49;&#x4EF7;</li>
+<li>F&#x4E2D;&#x4E0D;&#x5B58;&#x5728;X -&gt; Y&#xFF0C;X&#x6709;&#x771F;&#x5B50;&#x96C6;Z&#xFF0C;&#x4F7F;F&#x4E0E;F - {X -&gt; Y} + {Z -&gt; Y}&#x7B49;&#x4EF7;</li>
+</ol>
+<p><strong>&#x4F8B;&#x5B50;</strong>&#xFF1A;<br>
+P(A, B, C, D, E, F)<br>
+F = {A -&gt; C, A -&gt; B, C -&gt; D, A -&gt; D, (A, B) -&gt; C, (A, B) -&gt; F}<br>
+Fmin = {A -&gt; C, A -&gt; B, C -&gt; D, (A, B) -&gt; F}<br>
+Key = (A, B)<br>
+&#x5DE6;&#x90E8;&#x76F8;&#x540C;&#x5206;&#x7EC4;&#xFF1A;{A -&gt; C, A -&gt; B}, {C -&gt; D}, {(A, B) -&gt; F}<br>
+S1 (A, B, C), S2 (C, D), S3 (A, B, F)<br>
+&#x4E0D;&#x5B58;&#x5728;&#x5305;&#x542B;&#x60C5;&#x51B5;&#xFF0C;S3&#x4E2D;&#x6709;&#x952E;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x952E;</p>
+<p><em>3NF&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x65E0;&#x635F;&#x5206;&#x89E3;&#x548C;&#x4FDD;&#x6301;&#x51FD;&#x6570;&#x4F9D;&#x8D56;</em></p>
+<h3 class="mume-header" id="bcnf-%E6%AF%8F%E4%B8%AA%E4%B8%BB%E5%B1%9E%E6%80%A7%E4%B8%8D%E4%BC%A0%E9%80%92%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E4%BA%8E%E4%B8%BB%E9%94%AE">BCNF: &#x6BCF;&#x4E2A;&#x4E3B;&#x5C5E;&#x6027;&#x4E0D;&#x4F20;&#x9012;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x4E8E;&#x4E3B;&#x952E;</h3>
+
+<p><strong>&#x5224;&#x5B9A;</strong>&#xFF1A;&#x6240;&#x6709;&#x975E;&#x5E73;&#x51E1;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x5DE6;&#x4FA7;&#x90FD;&#x662F;&#x8D85;&#x952E;&#x3002;<br>
+<em>&#x975E;&#x5E73;&#x51E1;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#xFF1A;X -&gt; Y&#xFF0C;Y &#x4E0D;&#x5728; X &#x4E2D;</em></p>
+<p><strong>&#x5206;&#x89E3;&#x4E3A;BCNF</strong></p>
+<ol>
+<li>&#x627E;&#x5230;&#x4E00;&#x4E2A;&#xFF08;&#x53F3;&#x4FA7;&#x5C3D;&#x91CF;&#x5927;&#x7684;&#xFF09;&#x8FDD;&#x80CC;BCNF&#x6761;&#x4EF6;&#x7684;&#x51FD;&#x6570;&#x4F9D;&#x8D56;X-&gt;B</li>
+<li>&#x8BA1;&#x7B97;X+</li>
+<li>R1 = X+&#xFF0C;R2 = R - (X+ - X)</li>
+<li>&#x5206;&#x89E3;F&#x5230;&#x4E24;&#x4E2A;&#x65B0;&#x7684;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;</li>
+<li>&#x9012;&#x5F52;&#x76F4;&#x5230;&#x6240;&#x6709;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;&#x90FD;&#x6EE1;&#x8DB3;BCNF</li>
+</ol>
+<p><strong>&#x4F8B;&#x5B50;</strong>&#xFF1A;<br>
+P(<u>A</u>, B, <u>C</u>, D, E)<br>
+F = {A -&gt; B, A -&gt; E, C -&gt; D}<br>
+Key = {A, C}<br>
+A -&gt; B &#x8FDD;&#x80CC;BCNF<br>
+A+ = {A, B, E}<br>
+R1 = {A, B, E}, R2 = {A, C, D}<br>
+F1 = {A -&gt; B, A -&gt; E}, F2 = {C -&gt; D}<br>
+&#x5BF9;R1: Key = {A}&#xFF0C;&#x6EE1;&#x8DB3;BCNF<br>
+&#x5BF9;R2: Key = {A, C}&#xFF0C;&#x4E0D;&#x6EE1;&#x8DB3;BCNF<br>
+C -&gt; D &#x8FDD;&#x80CC;BCNF<br>
+C+ = {C, D}<br>
+R3 = {C, D}, R4 = {A, C}<br>
+F3 = {C -&gt; D}, F4 = {}<br>
+&#x5BF9;R3: Key = {C}&#xFF0C;&#x6EE1;&#x8DB3;BCNF<br>
+&#x56E0;&#x6B64;&#x5206;&#x89E3;&#x4E3A;&#xFF1A;<br>
+R1(<u>A</u>, B, E), R2(<u>A</u>, C), R3(<u>C</u>, <u>D</u>)</p>
+<p><em>&#x4E0D;&#x5B58;&#x5728;&#x4EFB;&#x4F55;&#x4F9D;&#x8D56;&#x5FC5;&#x5B9A;&#x662F;BCNF&#x8303;&#x5F0F;</em><br>
+<em>&#x53EA;&#x6709;2&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x8868;&#x5FC5;&#x5B9A;&#x662F;BCNF&#x8303;&#x5F0F;</em><br>
+<em>BCNF&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x65E0;&#x635F;&#x5206;&#x89E3;&#xFF0C;&#x4F46;&#x4E0D;&#x4E00;&#x5B9A;&#x4FDD;&#x6301;&#x51FD;&#x6570;&#x4F9D;&#x8D56;</em></p>
+<h3 class="mume-header" id="4nf-%E6%AF%8F%E4%B8%AA%E5%A4%9A%E5%80%BC%E4%BE%9D%E8%B5%96%E4%BA%8E%E4%B8%BB%E9%94%AE">4NF: &#x6BCF;&#x4E2A;&#x591A;&#x503C;&#x4F9D;&#x8D56;&#x4E8E;&#x4E3B;&#x952E;</h3>
+
+<p>&#x591A;&#x503C;&#x4F9D;&#x8D56;MVD&#xFF1A;X -&gt;-&gt; Y&#xFF0C;&#x5C06;X&#x7684;&#x4EFB;&#x610F;&#x4E24;&#x4E2A;&#x5143;&#x7EC4;&#x7684;Y&#x503C;&#x4EA4;&#x6362;&#xFF0C;&#x7ED3;&#x679C;&#x4ECD;&#x5728;&#x8BE5;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;&#x4E2D;<br>
+X -&gt; Y&#xFF0C;&#x5219;X -&gt;-&gt; Y<br>
+X -&gt;-&gt; Y&#xFF0C;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;&#x53EA;&#x6709;X, Y, Z&#xFF0C;&#x5219;X -&gt;-&gt; Z</p>
+<p><strong>&#x5224;&#x5B9A;</strong>&#xFF1A;&#x6240;&#x6709;&#x975E;&#x5E73;&#x51E1;&#x591A;&#x503C;&#x4F9D;&#x8D56;&#x5DE6;&#x4FA7;&#x90FD;&#x662F;&#x8D85;&#x952E;&#x3002;</p>
+<p><strong>&#x5206;&#x89E3;&#x4E3A;4NF</strong><br>
+&#x7C7B;&#x4F3C;BCNF&#xFF0C;&#x53EA;&#x662F;&#x5206;&#x89E3;&#x65F6;&#x5C06;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x6362;&#x6210;&#x591A;&#x503C;&#x4F9D;&#x8D56;</p>
+<p><em>4NF&#x4E00;&#x5B9A;&#x6EE1;&#x8DB3;BCNF&#xFF0C;&#x4F46;&#x662F;BCNF&#x4E0D;&#x4E00;&#x5B9A;&#x6EE1;&#x8DB3;4NF</em></p>
+<h2 class="mume-header" id="%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0">&#x5173;&#x7CFB;&#x4EE3;&#x6570;</h2>
+
+<table>
+<thead>
+<tr>
+<th>&#x7B26;&#x53F7;</th>
+<th>&#x540D;&#x79F0;</th>
+<th>&#x4F8B;&#x5B50;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2229;</mo></mrow><annotation encoding="application/x-tex">\cap</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">&#x2229;</span></span></span></span></td>
+<td>&#x4EA4;&#x96C6;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo>&#x2229;</mo><mi>L</mi><mi>i</mi><mi>k</mi><mi>e</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Sells \cap Likes</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2229;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.03148em;">ik</span><span class="mord mathnormal">es</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x222A;</mo></mrow><annotation encoding="application/x-tex">\cup</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">&#x222A;</span></span></span></span></td>
+<td>&#x5E76;&#x96C6;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo>&#x222A;</mo><mi>L</mi><mi>i</mi><mi>k</mi><mi>e</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Sells \cup Likes</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x222A;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.03148em;">ik</span><span class="mord mathnormal">es</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2216;</mo></mrow><annotation encoding="application/x-tex">\setminus</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x2216;</span></span></span></span></td>
+<td>&#x5DEE;&#x96C6;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo>&#x2216;</mo><mi>L</mi><mi>i</mi><mi>k</mi><mi>e</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Sells \setminus Likes</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2216;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.03148em;">ik</span><span class="mord mathnormal">es</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#xD7;</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">&#xD7;</span></span></span></span></td>
+<td>&#x7B1B;&#x5361;&#x5C14;&#x79EF;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo>&#xD7;</mo><mi>L</mi><mi>i</mi><mi>k</mi><mi>e</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Sells \times Likes</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.03148em;">ik</span><span class="mord mathnormal">es</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3C3;</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C3;</span></span></span></span></td>
+<td>&#x9009;&#x62E9;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>&#x3C3;</mi><mrow><mi>b</mi><mi>a</mi><mi>r</mi><mo>=</mo><mi mathvariant="normal">&quot;</mi><mi>J</mi><mi>o</mi><msup><mi>e</mi><mo mathvariant="normal" lspace="0em" rspace="0em">&#x2032;</mo></msup><mi>s</mi><mi mathvariant="normal">&quot;</mi></mrow></msub><mo stretchy="false">(</mo><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sigma_{bar = &quot;Joe&apos;s&quot;}(Sells)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C3;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ba</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mrel mtight">=</span><span class="mord mtight">&quot;</span><span class="mord mathnormal mtight" style="margin-right:0.09618em;">J</span><span class="mord mathnormal mtight">o</span><span class="mord mtight"><span class="mord mathnormal mtight">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">&#x2032;</span></span></span></span></span></span></span></span></span><span class="mord mathnormal mtight">s</span><span class="mord mtight">&quot;</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3C0;</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C0;</span></span></span></span></td>
+<td>&#x6295;&#x5F71;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>&#x3C0;</mi><mrow><mi>b</mi><mi>a</mi><mi>r</mi><mo separator="true">,</mo><mi>b</mi><mi>e</mi><mi>e</mi><mi>r</mi><mo separator="true">,</mo><mi>a</mi><mo>+</mo><mi>b</mi></mrow></msub><mo stretchy="false">(</mo><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\pi_{bar, beer, a+b}(Sells)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C0;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ba</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">eer</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">a</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">b</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>&#x22C8;</mo><mrow><mi>c</mi><mi>o</mi><mi>n</mi><mi>d</mi><mi>i</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\bowtie_{condition}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.655em;vertical-align:-0.15em;"></span><span class="mrel"><span class="mrel">&#x22C8;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">co</span><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td>theta-&#x8FDE;&#x63A5;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><msub><mo>&#x22C8;</mo><mrow><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mi mathvariant="normal">.</mi><mi>b</mi><mi>a</mi><mi>r</mi><mo>=</mo><mi>B</mi><mi>a</mi><mi>r</mi><mi>s</mi><mi mathvariant="normal">.</mi><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi></mrow></msub><mi>B</mi><mi>a</mi><mi>r</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Sells \bowtie_{Sells.bar = Bars.name} Bars</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel">&#x22C8;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal mtight">s</span><span class="mord mtight">.</span><span class="mord mathnormal mtight">ba</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mrel mtight">=</span><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">rs</span><span class="mord mtight">.</span><span class="mord mathnormal mtight">nam</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">a</span><span class="mord mathnormal">rs</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x22C8;</mo></mrow><annotation encoding="application/x-tex">\bowtie</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.51em;vertical-align:-0.005em;"></span><span class="mrel">&#x22C8;</span></span></span></span></td>
+<td>&#x81EA;&#x7136;&#x8FDE;&#x63A5;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo>&#x22C8;</mo><mi>B</mi><mi>a</mi><mi>r</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Sells \bowtie Bars</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6994em;vertical-align:-0.005em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x22C8;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">a</span><span class="mord mathnormal">rs</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3C1;</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">&#x3C1;</span></span></span></span></td>
+<td>&#x91CD;&#x547D;&#x540D;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>&#x3C1;</mi><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>b</mi><mi>a</mi><mi>r</mi><mn>1</mn><mo separator="true">,</mo><mi>b</mi><mi>e</mi><mi>e</mi><mi>r</mi><mn>1</mn><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">(</mo><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\rho_{S(bar1, beer1)}(Sells)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord mathnormal">&#x3C1;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight">ba</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">eer</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3B4;</mi></mrow><annotation encoding="application/x-tex">\delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">&#x3B4;</span></span></span></span></td>
+<td>&#x53BB;&#x91CD;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3B4;</mi><mo stretchy="false">(</mo><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\delta(Sells)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">&#x3B4;</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3C4;</mi></mrow><annotation encoding="application/x-tex">\tau</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">&#x3C4;</span></span></span></span></td>
+<td>&#x6392;&#x5E8F;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>&#x3C4;</mi><mrow><mi>b</mi><mi>e</mi><mi>e</mi><mi>r</mi></mrow></msub><mo stretchy="false">(</mo><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\tau_{beer}(Sells)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em;">&#x3C4;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">eer</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3B3;</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">&#x3B3;</span></span></span></span></td>
+<td>&#x805A;&#x5408;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>&#x3B3;</mi><mrow><mi>b</mi><mi>e</mi><mi>e</mi><mi>r</mi><mo separator="true">,</mo><mi>C</mi><mi>O</mi><mi>U</mi><mi>N</mi><mi>T</mi><mo stretchy="false">(</mo><mi>b</mi><mi>a</mi><mi>r</mi><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">(</mo><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\gamma_{beer, COUNT(bar)}(Sells)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05556em;">&#x3B3;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:-0.0556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">eer</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">CO</span><span class="mord mathnormal mtight" style="margin-right:0.10903em;">U</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">NT</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight">ba</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mo lspace="0em" rspace="0em">&#x22C8;</mo><mo>&#x2DA;</mo></mover></mrow><annotation encoding="application/x-tex">\r{\bowtie}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7734em;vertical-align:-0.005em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7684em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mrel">&#x22C8;</span></span></span><span style="top:-3.074em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.375em;"><span class="mord">&#x2DA;</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.005em;"><span></span></span></span></span></span></span></span></span></td>
+<td>&#x5916;&#x8FDE;&#x63A5;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mover accent="true"><mo lspace="0em" rspace="0em">&#x22C8;</mo><mo>&#x2DA;</mo></mover><mi>B</mi><mi>a</mi><mi>r</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Sells \r{\bowtie} Bars</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7734em;vertical-align:-0.005em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7684em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mrel">&#x22C8;</span></span></span><span style="top:-3.074em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.375em;"><span class="mord">&#x2DA;</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.005em;"><span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">a</span><span class="mord mathnormal">rs</span></span></span></span></td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#xF7;</mo></mrow><annotation encoding="application/x-tex">\div</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">&#xF7;</span></span></span></span></td>
+<td>&#x9664;&#x6CD5;</td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>l</mi><mi>l</mi><mi>s</mi><mo>&#xF7;</mo><mi>L</mi><mi>i</mi><mi>k</mi><mi>e</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Sells \div Likes</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xF7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.03148em;">ik</span><span class="mord mathnormal">es</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p><img src="assets\div.png" alt="div"><br>
+&#x5173;&#x7CFB;&#x8FD0;&#x7B97;&#x6700;&#x5C0F;&#x5B8C;&#x5907;&#x96C6;&#xFF1A;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x222A;</mo><mo separator="true">,</mo><mo>&#x2216;</mo><mo separator="true">,</mo><mo>&#xD7;</mo><mo separator="true">,</mo><mi>&#x3C3;</mi><mo separator="true">,</mo><mi>&#x3C0;</mi></mrow><annotation encoding="application/x-tex">\cup, \setminus, \times, \sigma, \pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x222A;</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">&#x2216;</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">&#xD7;</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C3;</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C0;</span></span></span></span></p>
+<h2 class="mume-header" id="%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D">&#x6545;&#x969C;&#x6062;&#x590D;</h2>
+
+<p>A &#x539F;&#x5B50;&#x6027;&#xFF1A;&#x8981;&#x4E48;&#x5168;&#x505A;&#x8981;&#x4E48;&#x4E0D;&#x505A;<br>
+C &#x4E00;&#x81F4;&#x6027;&#xFF1A;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;<br>
+I &#x9694;&#x79BB;&#x6027;&#xFF1A;&#x4E00;&#x4E2A;&#x4E8B;&#x7269;&#x7684;&#x64CD;&#x4F5C;&#x4E0D;&#x80FD;&#x88AB;&#x5E76;&#x53D1;&#x4E8B;&#x7269;&#x5E72;&#x6270;<br>
+D &#x6301;&#x4E45;&#x6027;&#xFF1A;&#x4E00;&#x65E6;&#x63D0;&#x4EA4;&#x6539;&#x53D8;&#x6C38;&#x4E45;&#x6027;</p>
+<h3 class="mume-header" id="undo-logging">Undo Logging</h3>
+
+<p>log:</p>
+<ol>
+<li>&lt;T, start&gt;</li>
+<li>&#x8BB0;&#x5F55;&#x65E7;&#x503C;&lt;T, a, old_value&gt;&#xFF0C;&#x7136;&#x540E;&#x4FEE;&#x6539;</li>
+<li>&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x8BB0;&#x5F55;&#x63D0;&#x4EA4;&lt;T, commit&gt;</li>
+</ol>
+<p>&#x7279;&#x70B9;&#xFF1A;Commit&#x7684;&#x4E00;&#x5B9A;&#x4FEE;&#x6539;&#x4E86;&#xFF0C;&#x6CA1;commit&#x7684;&#x6709;&#x53EF;&#x80FD;&#x4FEE;&#x6539;&#x4E86;</p>
+<p>recover:</p>
+<ol>
+<li>&#x627E;&#x5230;&#x6240;&#x6709;&#x6709;&lt;Ti, start&gt;&#xFF0C;&#x4F46;&#x6CA1;&#x6709;&lt;Ti, commit&gt;&#x6216;&lt;Ti, abort&gt;&#x7684;log&#x4F5C;&#x4E3A;S</li>
+<li>For each &lt;Ti, X, v&gt; in S, &#x4ECE;&#x665A;&#x5230;&#x65E9;&#xFF0C;&#x5199;&#x56DE;v&#x5230;X</li>
+<li>&#x5199;&lt;Ti, abort&gt;&#x5230;log</li>
+</ol>
+<h3 class="mume-header" id="redo-logging">Redo Logging</h3>
+
+<p>log:</p>
+<ol>
+<li>&lt;T, start&gt;</li>
+<li>&#x8BB0;&#x5F55;&#x6240;&#x6709;&#x65B0;&#x503C;&lt;T, a, new_value&gt;</li>
+<li>&#x8BB0;&#x5F55;&#x63D0;&#x4EA4;&lt;T, commit&gt;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8FDB;&#x884C;&#x4FEE;&#x6539;</li>
+</ol>
+<p>&#x7279;&#x70B9;&#xFF1A;Commit&#x7684;&#x4E0D;&#x4E00;&#x5B9A;&#x4FEE;&#x6539;&#x4E86;&#xFF0C;&#x6CA1;commit&#x7684;&#x4E00;&#x5B9A;&#x6CA1;&#x4FEE;&#x6539;</p>
+<p>recover:</p>
+<ol>
+<li>&#x627E;&#x5230;&#x6240;&#x6709;&#x6709;&lt;Ti, commit&gt;&#x7684;log&#x4F5C;&#x4E3A;S</li>
+<li>For each &lt;Ti, X, v&gt; in S, &#x4ECE;&#x65E9;&#x5230;&#x665A;&#xFF0C;&#x5199;&#x56DE;v&#x5230;X</li>
+</ol>
+<p>recover with checkpointing:</p>
+<ol>
+<li>&#x627E;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A;&lt;checkpoint&gt;&#x540E;&#x6240;&#x6709;&#x6709;&lt;Ti, commit&gt;&#x7684;log&#x4F5C;&#x4E3A;S</li>
+<li>For each &lt;Ti, X, v&gt; in S, &#x4ECE;&#x65E9;&#x5230;&#x665A;&#xFF0C;&#x5199;&#x56DE;v&#x5230;X</li>
+</ol>
+<h3 class="mume-header" id="undoredo-logging">Undo/Redo Logging</h3>
+
+<p>log:</p>
+<ol>
+<li>&lt;T, start&gt;</li>
+<li>&#x8BB0;&#x5F55;&lt;T, a, old_value, new_value&gt;&#xFF0C;&#x7136;&#x540E;&#x4FEE;&#x6539;</li>
+<li>&#x968F;&#x65F6;&#x8FDB;&#x884C;&#x63D0;&#x4EA4;&lt;T, commit&gt;</li>
+</ol>
+<p>recover:</p>
+<ol>
+<li>&#x4ECE;&#x65E9;&#x5230;&#x665A;&#x91CD;&#x505A;&#x6240;&#x6709;commit&#x8FC7;&#x7684;&#x64CD;&#x4F5C;</li>
+<li>&#x4ECE;&#x665A;&#x5230;&#x65E9;&#x56DE;&#x6EDA;&#x6240;&#x6709;&#x672A;commit&#x7684;&#x64CD;&#x4F5C;</li>
+</ol>
+<p>recover with nonquiescent checkpointing:</p>
+<ol>
+<li>Undo&#x6700;&#x540E;&#x4E00;&#x4E2A;&lt;start CKPT&gt;&#x540E;&#x6240;&#x6709;&#x672A;commit&#x7684;&#x64CD;&#x4F5C;</li>
+<li>&#x7EE7;&#x7EED;Undo CKPT active list&#x4E2D;&#x672A;commit&#x7684;&#x64CD;&#x4F5C;</li>
+<li>Redo&#x6700;&#x540E;&#x4E00;&#x4E2A;&lt;start CKPT&gt;&#x540E;&#x6240;&#x6709;commit&#x8FC7;&#x7684;&#x64CD;&#x4F5C;</li>
+</ol>
+<h2 class="mume-header" id="%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6">&#x5E76;&#x53D1;&#x63A7;&#x5236;</h2>
+
+<h3 class="mume-header" id="%E8%B0%83%E5%BA%A6">&#x8C03;&#x5EA6;</h3>
+
+<p>&#x4E32;&#x884C;&#x8C03;&#x5EA6;&#xFF1A;&#x4E0D;&#x5E76;&#x53D1;&#x64CD;&#x4F5C;&#x4E0D;&#x4EA4;&#x53C9;<br>
+&#x7B49;&#x4EF7;&#x8C03;&#x5EA6;&#xFF1A;&#x4E24;&#x4E2A;&#x8C03;&#x5EA6;&#x7684;&#x7ED3;&#x679C;&#x5728;&#x4EFB;&#x4F55;&#x6570;&#x636E;&#x5E93;&#x72B6;&#x6001;&#x90FD;&#x76F8;&#x540C;&#xFF0C;&#x5219;&#x4E8C;&#x8005;&#x7B49;&#x4EF7;<br>
+&#x53EF;&#x4E32;&#x884C;&#x5316;&#x8C03;&#x5EA6;&#xFF1A;&#x7B49;&#x4EF7;&#x4E8E;&#x4E32;&#x884C;&#x8C03;&#x5EA6;&#x7684;&#x8C03;&#x5EA6;</p>
+<p>&#x51B2;&#x7A81;&#xFF1A;<br>
+&#x540C;&#x4E00;&#x4E2A;&#x4E8B;&#x7269;&#x7684;&#x4EFB;&#x4F55;&#x52A8;&#x4F5C;&#x90FD;&#x4E0D;&#x53EF;&#x4EE5;&#x4EA4;&#x6362;<br>
+&#x4E0D;&#x540C;&#x7684;&#x4E8B;&#x7269;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x64CD;&#x4F5C;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x52A8;&#x4F5C;&#x662F;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E24;&#x4E2A;&#x52A8;&#x4F5C;&#x51B2;&#x7A81;</p>
+<p>&#x51B2;&#x7A81;&#x7B49;&#x4EF7;&#x8C03;&#x5EA6;&#xFF1A;<br>
+&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x8C03;&#x5EA6;&#x53EF;&#x4EE5;&#x4E0D;&#x51B2;&#x7A81;&#x5730;&#x8F6C;&#x6362;&#x4E3A;&#x53E6;&#x4E00;&#x4E2A;&#x8C03;&#x5EA6;&#xFF0C;&#x5219;&#x8FD9;&#x4E24;&#x4E2A;&#x8C03;&#x5EA6;&#x662F;&#x51B2;&#x7A81;&#x7B49;&#x4EF7;&#x7684;<br>
+&#x53EF;&#x4E32;&#x884C;&#x5316;&#x8C03;&#x5EA6;&#xFF1A;<br>
+&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x8C03;&#x5EA6;&#x53EF;&#x4EE5;&#x4E0D;&#x51B2;&#x7A81;&#x5730;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x4E32;&#x884C;&#x8C03;&#x5EA6;&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;&#x8C03;&#x5EA6;&#x662F;&#x53EF;&#x4E32;&#x884C;&#x5316;&#x7684;<br>
+&#x5982;&#x679C;&#x4F18;&#x5148;&#x56FE;&#x6CA1;&#x6709;&#x73AF;&#x5219;&#x4E3A;&#x8C03;&#x5EA6;&#x51B2;&#x7A81;&#x53EF;&#x4E32;&#x884C;&#x5316;&#xFF0C;&#x5426;&#x5219;&#x4E0D;&#x662F;<br>
+&#x51B2;&#x7A81;&#x7B49;&#x4EF7;&#x8C03;&#x5EA6;&#x7684;&#x4F18;&#x5148;&#x56FE;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x4F18;&#x5148;&#x56FE;&#x76F8;&#x540C;&#x7684;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x7B49;&#x4EF7;&#x8C03;&#x5EA6;&#xFF08;&#x6CA1;&#x6709;&#x73AF;&#x5219;&#x6210;&#x7ACB;&#xFF09;</p>
+<p>&#x4E32;&#x884C;&#x5316;&#x65B9;&#x6CD5;&#xFF1A;<br>
+&#x6BCF;&#x4E2A;&#x4E8B;&#x7269;&#x4E3A;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x9010;&#x4E2A;&#x5143;&#x7D20;&#x5206;&#x6790;&#xFF0C;&#x82E5;&#x67D0;&#x5143;&#x7D20;&#x7684;&#x8BFB;&#x5199;&#xFF08;&#x5199;&#x5199;&#xFF09;&#x64CD;&#x4F5C;&#x5728;&#x4E24;&#x4E2A;&#x4E8B;&#x7269;&#x4E2D;&#x5148;&#x540E;&#x51FA;&#x73B0;&#xFF0C;&#x5219;&#x5728;&#x4E24;&#x4E2A;&#x4E8B;&#x7269;&#x95F4;&#x8FDE;&#x4E00;&#x6761;&#x6709;&#x5411;&#x8FB9;&#xFF0C;&#x6700;&#x540E;&#x5F97;&#x5230;&#x4F18;&#x5148;&#x56FE;&#xFF0C;&#x82E5;&#x4F18;&#x5148;&#x56FE;&#x6709;&#x73AF;&#x5219;&#x4E0D;&#x53EF;&#x4E32;&#x884C;&#x5316;&#xFF0C;&#x5426;&#x5219;&#x53EF;&#x4E32;&#x884C;&#x5316;&#xFF0C;&#x62D3;&#x6251;&#x6392;&#x5E8F;&#x5F97;&#x5230;&#x4E32;&#x884C;&#x5316;&#x8C03;&#x5EA6;<br>
+W3(A)R1(B)R2(A)R1(D)W1(B)R4(A)W2(B)R4(D)R3(D)R4(B)</p>
+<div class="mermaid">graph LR
+    A[T1] --&gt; D[T4]
+    B[T2] --&gt; D
+    C[T3] --&gt; D
+    C --&gt; B
+</div><p>&#x53EF;&#x4E32;&#x884C;&#x5316;&#xFF0C;&#x62D3;&#x6251;&#x6392;&#x5E8F;&#x5F97;&#x5230;&#x7B49;&#x4EF7;&#x8C03;&#x5EA6;&#xFF1A;T1, T3, T2, T4&#x6216;T3, T1, T2, T4</p>
+<h3 class="mume-header" id="%E4%B8%A4%E6%AE%B5%E9%94%81">&#x4E24;&#x6BB5;&#x9501;</h3>
+
+<ol>
+<li>Well-formed transaction: &#x52A0;&#x9501;&#x540E;&#x8BBF;&#x95EE;&#xFF0C;&#x8BBF;&#x95EE;&#x5B8C;&#x89E3;&#x9501;</li>
+<li>Legal schedule: &#x89E3;&#x9501;&#x524D;&#x53E6;&#x4E00;&#x4E2A;&#x4E8B;&#x7269;&#x4E0D;&#x80FD;&#x52A0;&#x9501;</li>
+<li>2PL &#x4E24;&#x6BB5;&#x9501;&#xFF1A;&#x540C;&#x4E00;&#x4E2A;&#x4E8B;&#x7269;&#x52A0;&#x9501;&#x547D;&#x4EE4;&#x524D;&#x4E0D;&#x80FD;&#x6709;&#x89E3;&#x9501;&#xFF0C;&#x89E3;&#x9501;&#x547D;&#x4EE4;&#x540E;&#x4E0D;&#x80FD;&#x6709;&#x52A0;&#x9501;&#x3002;&#x4E00;&#x4E2A;&#x4E8B;&#x7269;&#x5148;&#x628A;&#x6240;&#x6709;&#x9700;&#x8981;&#x7684;&#x9501;&#x52A0;&#x4E0A;&#xFF0C;&#x518D;&#x9010;&#x4E2A;&#x89E3;&#x9501;</li>
+</ol>
+<p>&#x6EE1;&#x8DB3;1. 2. 3. &#x5219;&#x53EF;&#x4E32;&#x884C;&#x5316;&#xFF0C;&#x4F46;&#x4E0D;&#x80FD;&#x89E3;&#x51B3;&#x6B7B;&#x9501;&#x95EE;&#x9898;</p>
+<p>&#x4E00;&#x4E9B;&#x89E3;&#x51B3;&#x6B7B;&#x9501;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;<br>
+&#x4E00;&#x6B21;&#x6027;&#x52A0;&#x9501;&#xFF1A;&#x6240;&#x6709;&#x4E8B;&#x7269;&#x4E00;&#x6B21;&#x6027;&#x52A0;&#x4E0A;&#x6240;&#x6709;&#x9700;&#x8981;&#x7684;&#x9501;<br>
+&#x987A;&#x5E8F;&#x52A0;&#x9501;&#xFF1A;&#x5BF9;&#x4E8B;&#x7269;&#x8BBE;&#x8BA1;&#x56FA;&#x5B9A;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x6309;&#x7167;&#x56FA;&#x5B9A;&#x7684;&#x987A;&#x5E8F;&#x52A0;&#x9501;&#x548C;&#x89E3;&#x9501;</p>
+<h3 class="mume-header" id="%E5%85%B1%E4%BA%AB%E9%94%81">&#x5171;&#x4EAB;&#x9501;</h3>
+
+<p>&#x8BFB;&#x9501;&#xFF1A;l-S(A)&#xFF0C;&#x5199;&#x9501;&#xFF1A;l-X(A)</p>
+<ol>
+<li>Well-formed transaction: &#x8BFB;&#x524D;&#x52A0;&#x8BFB;&#x9501;&#xFF0C;&#x5199;&#x524D;&#x52A0;&#x5199;&#x9501;&#xFF0C;&#x8BBF;&#x95EE;&#x5B8C;&#x89E3;&#x9501;&#xFF1B;&#x5148;&#x8BFB;&#x540E;&#x5199;&#x53EF;&#x4EE5;&#x52A0;&#x6392;&#x5B83;&#x9501;&#x6216;&#x8005;&#x4E2D;&#x9014;&#x5347;&#x7EA7;&#x4E3A;&#x6392;&#x5B83;&#x9501;</li>
+<li>Legal schedule: &#x8BFB;&#x9501;&#x540E;&#x53E6;&#x4E00;&#x4E2A;&#x4E8B;&#x7269;&#x4E0D;&#x80FD;&#x52A0;&#x5199;&#x9501;&#xFF0C;&#x5199;&#x9501;&#x540E;&#x53E6;&#x4E00;&#x4E2A;&#x4E8B;&#x7269;&#x4E0D;&#x80FD;&#x52A0;&#x8BFB;&#x9501;&#x548C;&#x5199;&#x9501;</li>
+<li>2PL &#x4E24;&#x6BB5;&#x9501;&#xFF1A;&#x4EC5;&#x53EF;&#x4EE5;&#x5728;&#x52A0;&#x9501;&#x9636;&#x6BB5;&#x5347;&#x7EA7;&#x9501;<br>
+| &#x5DF2;&#x6709;\&#x7533;&#x8BF7; | &#x8BFB;&#x9501; | &#x5199;&#x9501; |<br>
+| --- | --- | --- |<br>
+| &#x8BFB;&#x9501; | T | F |<br>
+| &#x5199;&#x9501; | F | F |</li>
+</ol>
+<h3 class="mume-header" id="%E6%9B%B4%E6%96%B0%E9%94%81">&#x66F4;&#x65B0;&#x9501;</h3>
+
+<p>&#x8BFB;&#x9501;&#xFF1A;l-S(A)&#xFF0C;&#x5199;&#x9501;&#xFF1A;l-X(A)&#xFF0C;&#x66F4;&#x65B0;&#x9501;&#xFF1A;l-U(A)<br>
+&#x82E5;&#x5DF2;&#x77E5;&#x5148;&#x8BFB;&#x540E;&#x5199;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x5148;&#x52A0;&#x66F4;&#x65B0;&#x9501;&#xFF0C;&#x518D;&#x5347;&#x7EA7;&#x4E3A;&#x5199;&#x9501;</p>
+<table>
+<thead>
+<tr>
+<th>&#x5DF2;&#x6709;\&#x7533;&#x8BF7;</th>
+<th>&#x8BFB;&#x9501;</th>
+<th>&#x5199;&#x9501;</th>
+<th>&#x66F4;&#x65B0;&#x9501;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x8BFB;&#x9501;</td>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+</tr>
+<tr>
+<td>&#x5199;&#x9501;</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>&#x66F4;&#x65B0;&#x9501;</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="%E6%84%8F%E5%90%91%E9%94%81">&#x610F;&#x5411;&#x9501;</h3>
+
+<table>
+<thead>
+<tr>
+<th>&#x5DF2;&#x6709;\&#x7533;&#x8BF7;</th>
+<th>IS</th>
+<th>IX</th>
+<th>S</th>
+<th>X</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IS</td>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>IX</td>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>S</td>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>X</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<p>&#x9664;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x52A0;&#x8BFB;&#x9501;&#x6216;&#x5199;&#x9501;&#x5916;&#xFF0C;&#x6BCF;&#x4E2A;&#x8DEF;&#x8FC7;&#x7684;&#x8282;&#x70B9;&#x90FD;&#x52A0;&#x610F;&#x5411;&#x8BFB;/&#x5199;&#x9501;<br>
+&#x63D2;&#x5165;&#x65B0;&#x8282;&#x70B9;&#x65F6;&#xFF0C;&#x7ED9;&#x7236;&#x8282;&#x70B9;&#x52A0;&#x8BFB;/&#x5199;&#x9501;&#xFF0C;</p>
+
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.querySelectorAll('.mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>
